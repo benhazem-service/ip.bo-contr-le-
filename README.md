@@ -28,45 +28,24 @@
         body { background-color: var(--bg); color: var(--text); padding-bottom: 80px; min-height: 100vh; }
 
         /* --- Auth --- */
-        #auth-container {
-            display: flex; justify-content: center; align-items: center; height: 100vh;
-            background: linear-gradient(135deg, var(--primary), #818cf8); padding: 20px;
-        }
-        .auth-card {
-            background: var(--surface); padding: 2rem; border-radius: 1rem; width: 100%; max-width: 400px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center;
-        }
+        #auth-container { display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, var(--primary), #818cf8); padding: 20px; }
+        .auth-card { background: var(--surface); padding: 2rem; border-radius: 1rem; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center; }
         .password-wrapper { position: relative; margin-bottom: 1rem; }
         .password-wrapper i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-light); }
-        .auth-input {
-            width: 100%; padding: 12px 15px; margin-bottom: 10px; border: 1px solid var(--border);
-            border-radius: var(--radius); outline: none; font-size: 16px; background: #fff;
-        }
+        .auth-input { width: 100%; padding: 12px 15px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: var(--radius); outline: none; font-size: 16px; background: #fff; }
         .password-wrapper input { padding-left: 40px; }
-        .auth-btn {
-            width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: var(--radius);
-            font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px;
-        }
+        .auth-btn { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: var(--radius); font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; }
 
-        /* --- Navbar --- */
-        nav {
-            background: var(--surface); padding: 15px 20px; display: flex; justify-content: space-between;
-            align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
+        /* --- Layout --- */
+        #app-container { display: none; }
+        nav { background: var(--surface); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
         .top-actions { display: flex; gap: 15px; }
         .icon-btn { background: none; border: none; font-size: 1.4rem; color: var(--text-light); cursor: pointer; }
 
         /* --- Bottom Nav --- */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; width: 100%; background: var(--surface);
-            display: flex; justify-content: space-around; padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 999; border-top: 1px solid var(--border);
-        }
-        .nav-item {
-            background: none; border: none; display: flex; flex-direction: column; align-items: center;
-            color: var(--text-light); font-size: 0.8rem; cursor: pointer; width: 20%;
-        }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--surface); display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 999; border-top: 1px solid var(--border); }
+        .nav-item { background: none; border: none; display: flex; flex-direction: column; align-items: center; color: var(--text-light); font-size: 0.8rem; cursor: pointer; width: 20%; }
         .nav-item i { font-size: 1.4rem; margin-bottom: 4px; }
         .nav-item.active { color: var(--primary); }
 
@@ -80,74 +59,36 @@
         .chart-container.hidden { display: none; }
         
         .controls-area { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
-        .form-control {
-            width: 100%; padding: 10px 15px; border: 1px solid var(--border);
-            border-radius: var(--radius); outline: none; background: #fff; font-size: 15px;
-        }
+        .form-control { width: 100%; padding: 10px 15px; border: 1px solid var(--border); border-radius: var(--radius); outline: none; background: #fff; font-size: 15px; }
 
-        /* --- TABLE STYLE (RESTORED CLASSIC) --- */
-        .table-card {
-            background: var(--surface);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            overflow: hidden; /* Important for corners */
-        }
-        .table-wrapper {
-            overflow-x: auto; /* Enable Horizontal Scroll */
-            -webkit-overflow-scrolling: touch;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            white-space: nowrap; /* Keep rows on one line */
-        }
-        th {
-            background: #f1f5f9;
-            color: var(--text-light);
-            font-weight: 600;
-            padding: 12px 15px;
-            text-align: right;
-            font-size: 0.9rem;
-        }
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--border);
-            color: var(--text);
-            font-size: 0.95rem;
-            vertical-align: middle;
-        }
+        /* --- TABLE STYLE --- */
+        .table-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table { width: 100%; border-collapse: collapse; white-space: nowrap; }
+        th { background: #f1f5f9; color: var(--text-light); font-weight: 600; padding: 12px 15px; text-align: right; font-size: 0.9rem; }
+        td { padding: 12px 15px; border-bottom: 1px solid var(--border); color: var(--text); font-size: 0.95rem; vertical-align: middle; }
         tr:last-child td { border-bottom: none; }
         tr:hover { background-color: #f8fafc; }
 
-        /* Badges */
-        .status-badge {
-            padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;
-            display: inline-block; min-width: 60px; text-align: center; cursor: pointer;
-        }
+        .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; display: inline-block; min-width: 60px; text-align: center; cursor: pointer; }
         .status-active { background: #dcfce7; color: #166534; }
         .status-warning { background: #fef9c3; color: #854d0e; }
         .status-expired { background: #fee2e2; color: #991b1b; }
         .status-none { background: #f1f5f9; color: #64748b; }
 
         /* Buttons */
-        .btn {
-            padding: 10px; border: none; border-radius: 8px; cursor: pointer;
-            font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 5px;
-        }
+        .btn { padding: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-success { background: var(--success); color: white; }
         .btn-danger { background: var(--danger); color: white; }
         .btn-warning { background: var(--warning); color: white; }
         .btn-sm { padding: 6px 10px; font-size: 13px; }
 
-        /* Forms */
+        /* Forms & Stats */
         .card { background: var(--surface); padding: 20px; border-radius: var(--radius); margin-bottom: 15px; border: 1px solid var(--border); box-shadow: var(--shadow); }
         .card h4 { margin-bottom: 15px; color: var(--primary); border-bottom: 1px solid #eee; padding-bottom: 10px; }
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 5px; color: var(--text-light); font-size: 0.9rem; }
-
-        /* Stats */
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .stat-card { text-align: center; padding: 15px; border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
         .stat-value { font-size: 1.4rem; font-weight: 800; display: block; margin-top: 5px; }
@@ -319,8 +260,16 @@
 
             <!-- 4. TRASH -->
             <div id="trash" class="section">
-                <h3 style="color:var(--danger); margin-bottom:15px;">سلة المهملات</h3>
-                <div id="trashListMobile"></div>
+                <div class="table-card" style="border-color: var(--danger);">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead style="background-color: #fee2e2;">
+                                <tr><th>الاسم</th><th>إجراءات</th></tr>
+                            </thead>
+                            <tbody id="trashTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <!-- 5. SETTINGS -->
@@ -444,11 +393,6 @@
                 if (isAdmin) renderAdminDevices();
             });
             document.getElementById('loading').style.display = 'none';
-        }
-
-        async function claimOrphanedSubscribers(adminUid) {
-            const allSubs = await getDocs(collection(db, "subscribers"));
-            allSubs.forEach(async (d) => { if (!d.data().userId) await updateDoc(d.ref, { userId: adminUid }); });
         }
 
         window.toggleAuthMode = () => {
@@ -594,20 +538,40 @@
             });
         }
 
+        // --- FIXED TRASH LOGIC ---
         window.renderTrash = () => {
-            const container = document.getElementById('trashListMobile');
-            container.innerHTML = '';
+            const tbody = document.getElementById('trashTableBody');
+            tbody.innerHTML = '';
             trash.forEach(i => {
-                container.innerHTML += `
-                    <div class="card" style="margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-weight:bold">${i.name}</span>
-                        <div style="display:flex; gap:5px;">
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${i.name}</td>
+                        <td>
                             <button class="btn btn-success btn-sm" onclick="restore('${i.id}')">استعادة</button>
                             <button class="btn btn-danger btn-sm" onclick="permDelete('${i.id}')">حذف</button>
-                        </div>
-                    </div>
+                        </td>
+                    </tr>
                 `;
             });
+        };
+
+        // --- FIXED RESTORE & DELETE ---
+        window.restore = async (id) => {
+            const item = trash.find(t => t.id === id);
+            if (!item) return;
+            try {
+                // Copy data without id and deletedAt
+                const dataToRestore = { ...item };
+                delete dataToRestore.id;
+                delete dataToRestore.deletedAt;
+                
+                await addDoc(collection(db, "subscribers"), dataToRestore);
+                await deleteDoc(doc(db, "trash", id));
+            } catch (e) { alert("حدث خطأ: " + e.message); }
+        };
+
+        window.permDelete = async (id) => {
+            if(confirm("حذف نهائي؟")) await deleteDoc(doc(db, "trash", id));
         };
 
         function calculateFinances() {
@@ -722,8 +686,6 @@
         };
 
         window.moveToTrash = async (id) => { if(confirm("نقل للسلة؟")) { const s = subscribers.find(x=>x.id===id); await addDoc(collection(db,"trash"),{...s, deletedAt:new Date().toISOString()}); await deleteDoc(doc(db,"subscribers",id)); }};
-        window.restore = async (id) => { const i = trash.find(x=>x.id===id); if(i) { const {deletedAt, id:old, ...d}=i; await addDoc(collection(db,"subscribers"),d); await deleteDoc(doc(db,"trash"),id); }};
-        window.permDelete = async (id) => { if(confirm("نهائي؟")) await deleteDoc(doc(db,"trash"),id); };
 
         window.addDevice = async () => { const v=document.getElementById('newDeviceInput').value; if(v) await addDoc(collection(db,"managed_devices"),{name:v}); document.getElementById('newDeviceInput').value=''; };
         window.deleteDevice = async (id) => { if(confirm("حذف؟")) await deleteDoc(doc(db,"managed_devices"),id); };
