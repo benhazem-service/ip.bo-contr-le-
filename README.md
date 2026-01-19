@@ -11,17 +11,17 @@
         :root {
             --primary: #4f46e5;
             --primary-dark: #4338ca;
-            --bg: #f1f5f9;
+            --bg: #f8fafc;
             --surface: #ffffff;
-            --text: #0f172a;
+            --text: #1e293b;
             --text-light: #64748b;
             --border: #e2e8f0;
             --danger: #ef4444;
             --success: #10b981;
             --warning: #f59e0b;
             --info: #3b82f6;
-            --radius: 12px;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -38,28 +38,17 @@
         }
         .password-wrapper { position: relative; margin-bottom: 1rem; }
         .password-wrapper i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-light); }
-        
-        /* Inputs & Buttons (Touch Friendly) */
-        .auth-input, .form-control {
+        .auth-input {
             width: 100%; padding: 12px 15px; margin-bottom: 10px; border: 1px solid var(--border);
             border-radius: var(--radius); outline: none; font-size: 16px; background: #fff;
         }
         .password-wrapper input { padding-left: 40px; }
-        
-        .auth-btn, .btn {
-            width: 100%; padding: 14px; border: none; border-radius: var(--radius);
-            font-weight: bold; font-size: 16px; cursor: pointer; display: flex; 
-            align-items: center; justify-content: center; gap: 8px; transition: 0.2s;
+        .auth-btn {
+            width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: var(--radius);
+            font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px;
         }
-        .auth-btn { background: var(--primary); color: white; margin-top: 10px; }
-        
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-warning { background: var(--warning); color: white; }
-        .btn-sm { padding: 8px 12px; font-size: 14px; width: auto; }
 
-        /* --- Navbar (Top) --- */
+        /* --- Navbar --- */
         nav {
             background: var(--surface); padding: 15px 20px; display: flex; justify-content: space-between;
             align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -68,12 +57,11 @@
         .top-actions { display: flex; gap: 15px; }
         .icon-btn { background: none; border: none; font-size: 1.4rem; color: var(--text-light); cursor: pointer; }
 
-        /* --- Bottom Navigation (Mobile) --- */
+        /* --- Bottom Nav --- */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%; background: var(--surface);
             display: flex; justify-content: space-around; padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 999;
-            border-top: 1px solid var(--border);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 999; border-top: 1px solid var(--border);
         }
         .nav-item {
             background: none; border: none; display: flex; flex-direction: column; align-items: center;
@@ -82,91 +70,96 @@
         .nav-item i { font-size: 1.4rem; margin-bottom: 4px; }
         .nav-item.active { color: var(--primary); }
 
-        /* --- Layout --- */
-        .container { padding: 15px; max-width: 1000px; margin: 0 auto; }
+        /* --- Container --- */
+        .container { padding: 15px; max-width: 1200px; margin: 0 auto; }
         .section { display: none; animation: fadeIn 0.3s; }
         .section.active { display: block; }
 
-        /* --- Cards & Dashboard --- */
-        .dashboard-grid { display: flex; flex-direction: column; gap: 15px; }
-        .card { background: var(--surface); padding: 15px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
+        /* --- Dashboard --- */
+        .chart-container { height: 250px; margin-bottom: 15px; background: var(--surface); padding: 10px; border-radius: var(--radius); box-shadow: var(--shadow); }
+        .chart-container.hidden { display: none; }
         
         .controls-area { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
-        .chart-container { height: 250px; margin-bottom: 15px; }
-        .chart-container.hidden { display: none; }
-
-        /* --- Responsive Table (Card View) --- */
-        table { width: 100%; border-collapse: collapse; }
-        
-        /* Desktop View */
-        @media (min-width: 769px) {
-            .bottom-nav { display: none; }
-            th, td { padding: 12px; text-align: right; border-bottom: 1px solid var(--border); }
-            th { background: #f8fafc; color: var(--text-light); }
-            .desktop-nav { display: flex; gap: 10px; }
+        .form-control {
+            width: 100%; padding: 10px 15px; border: 1px solid var(--border);
+            border-radius: var(--radius); outline: none; background: #fff; font-size: 15px;
         }
 
-        /* Mobile View */
-        @media (max-width: 768px) {
-            .desktop-nav { display: none; } /* Hide text links on mobile */
-            
-            /* Turn Table into Cards */
-            table, thead, tbody, th, td, tr { display: block; }
-            thead { display: none; } /* Hide headers */
-            
-            tr {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: var(--radius);
-                margin-bottom: 15px;
-                padding: 15px;
-                box-shadow: var(--shadow);
-                position: relative;
-            }
-
-            td {
-                padding: 8px 0;
-                border: none;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 1px dashed #eee;
-            }
-            
-            td:last-child { border-bottom: none; padding-top: 15px; justify-content: flex-end; gap: 10px; }
-            
-            /* Labels */
-            td::before {
-                content: attr(data-label);
-                font-weight: 600;
-                color: var(--text-light);
-                font-size: 0.9rem;
-            }
-
-            /* Adjust Badges position in card */
-            .status-badge { font-size: 0.8rem; padding: 4px 10px; }
+        /* --- TABLE STYLE (RESTORED CLASSIC) --- */
+        .table-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden; /* Important for corners */
         }
+        .table-wrapper {
+            overflow-x: auto; /* Enable Horizontal Scroll */
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            white-space: nowrap; /* Keep rows on one line */
+        }
+        th {
+            background: #f1f5f9;
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 12px 15px;
+            text-align: right;
+            font-size: 0.9rem;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+            font-size: 0.95rem;
+            vertical-align: middle;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background-color: #f8fafc; }
 
-        /* Status Colors */
-        .status-badge { border-radius: 20px; font-weight: bold; }
+        /* Badges */
+        .status-badge {
+            padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;
+            display: inline-block; min-width: 60px; text-align: center; cursor: pointer;
+        }
         .status-active { background: #dcfce7; color: #166534; }
         .status-warning { background: #fef9c3; color: #854d0e; }
         .status-expired { background: #fee2e2; color: #991b1b; }
         .status-none { background: #f1f5f9; color: #64748b; }
 
+        /* Buttons */
+        .btn {
+            padding: 10px; border: none; border-radius: 8px; cursor: pointer;
+            font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+        }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-success { background: var(--success); color: white; }
+        .btn-danger { background: var(--danger); color: white; }
+        .btn-warning { background: var(--warning); color: white; }
+        .btn-sm { padding: 6px 10px; font-size: 13px; }
+
+        /* Forms */
+        .card { background: var(--surface); padding: 20px; border-radius: var(--radius); margin-bottom: 15px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+        .card h4 { margin-bottom: 15px; color: var(--primary); border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--text-light); font-size: 0.9rem; }
+
         /* Stats */
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .stat-card { text-align: center; padding: 15px; border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
-        .stat-value { font-size: 1.5rem; font-weight: 800; display: block; margin-top: 5px; }
+        .stat-value { font-size: 1.4rem; font-weight: 800; display: block; margin-top: 5px; }
         .stat-title { font-size: 0.8rem; color: var(--text-light); }
 
         /* Modals */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; place-items: center; z-index: 2000; backdrop-filter: blur(3px); }
-        .modal { background: var(--surface); width: 95%; max-width: 500px; max-height: 85vh; overflow-y: auto; border-radius: 16px; padding: 20px; }
-        .detail-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
-        
-        .date-popover { background: #333; color: #fff; padding: 8px 12px; border-radius: 8px; position: fixed; z-index: 3000; font-size: 0.85rem; display: none; pointer-events: none; }
+        .modal { background: var(--surface); width: 90%; max-width: 500px; max-height: 85vh; overflow-y: auto; border-radius: 16px; padding: 20px; }
+        .detail-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+        .date-popover { background: #333; color: #fff; padding: 8px 12px; border-radius: 8px; position: fixed; z-index: 3000; font-size: 0.85rem; display: none; pointer-events: none; text-align: center; }
 
+        @media (min-width: 769px) { .bottom-nav { display: none; } .controls-area { flex-direction: row; } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -177,32 +170,25 @@
         <div class="auth-card">
             <h2 style="color: var(--primary); margin-bottom: 0.5rem;">IPTV Pro</h2>
             <p style="color: var(--text-light); margin-bottom: 2rem;">لوحة تحكم ذكية</p>
-            
             <form id="auth-form">
                 <input type="email" id="auth-email" class="auth-input" placeholder="البريد الإلكتروني" required>
-                
                 <div class="password-wrapper">
                     <input type="password" id="auth-password" class="auth-input" placeholder="كلمة المرور" required>
                     <i class="fas fa-eye" onclick="togglePasswordVisibility('auth-password', this)"></i>
                 </div>
-
                 <div class="password-wrapper" id="confirm-password-wrapper" style="display: none;">
                     <input type="password" id="auth-confirm-password" class="auth-input" placeholder="تأكيد كلمة المرور">
                     <i class="fas fa-eye" onclick="togglePasswordVisibility('auth-confirm-password', this)"></i>
                 </div>
-
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; justify-content: flex-start;">
                     <input type="checkbox" id="remember-me" style="width: 18px; height: 18px;">
                     <label for="remember-me" style="font-size: 0.95rem;">تذكرني</label>
                 </div>
-
                 <div style="text-align: left; margin-bottom: 20px;">
                     <span id="forgot-password-link" style="color: var(--primary); font-size: 0.9rem; text-decoration: underline; cursor: pointer;" onclick="resetPassword()">نسيت كلمة المرور؟</span>
                 </div>
-
                 <button type="submit" class="auth-btn" id="auth-submit-btn">تسجيل الدخول</button>
             </form>
-            
             <p style="margin-top:20px; color:var(--text-light);" onclick="toggleAuthMode()" id="auth-switch-text">إنشاء حساب جديد</p>
             <p id="auth-error" style="color:var(--danger); background:#fee2e2; padding:10px; border-radius:8px; margin-top:10px; display:none;"></p>
         </div>
@@ -243,19 +229,21 @@
                     <input type="text" id="searchInput" placeholder="بحث بالاسم..." class="form-control" onkeyup="renderTable()">
                 </div>
 
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>الاسم</th>
-                                <th>IPTV (يوم)</th>
-                                <th>IBO (يوم)</th>
-                                <th>الجهاز</th>
-                                <th>إجراءات</th>
-                            </tr>
-                        </thead>
-                        <tbody id="subscribersTableBody"></tbody>
-                    </table>
+                <div class="table-card">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>الاسم</th>
+                                    <th>IPTV (يوم)</th>
+                                    <th>IBO (يوم)</th>
+                                    <th>الجهاز</th>
+                                    <th>إجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subscribersTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -265,50 +253,47 @@
                 <form id="subscriberForm">
                     <input type="hidden" id="editId">
                     
-                    <!-- Basic -->
-                    <div class="card" style="margin-bottom: 15px;">
-                        <h4 style="margin-bottom:10px; color:var(--text-light)">البيانات الأساسية</h4>
-                        <input type="text" id="name" class="form-control" placeholder="اسم المشترك" required>
-                        <input type="tel" id="phone" class="form-control" placeholder="رقم الهاتف">
-                        <select id="deviceType" class="form-control"><option value="">-- اختر الجهاز --</option></select>
+                    <div class="card">
+                        <h4>البيانات الأساسية</h4>
+                        <div class="form-group"><label>الاسم</label><input type="text" id="name" class="form-control" required></div>
+                        <div class="form-group"><label>الهاتف</label><input type="tel" id="phone" class="form-control"></div>
+                        <div class="form-group"><label>الجهاز</label><select id="deviceType" class="form-control"><option value="">-- اختر --</option></select></div>
                     </div>
 
-                    <!-- IPTV -->
-                    <div class="card" style="margin-bottom: 15px;">
-                        <h4 style="margin-bottom:10px; color:var(--text-light)">اشتراك IPTV</h4>
-                        <label>تاريخ البدء</label>
-                        <input type="date" id="startDate" class="form-control" required>
-                        <input type="number" id="duration" class="form-control" placeholder="المدة (أشهر)" required>
-                        <input type="number" id="iptvPrice" class="form-control" placeholder="السعر">
+                    <div class="card">
+                        <h4>اشتراك IPTV</h4>
+                        <div class="form-group"><label>البدء</label><input type="date" id="startDate" class="form-control" required></div>
+                        <div class="form-group"><label>المدة (أشهر)</label><input type="number" id="duration" class="form-control" required></div>
+                        <div class="form-group"><label>السعر</label><input type="number" id="iptvPrice" class="form-control"></div>
                     </div>
 
-                    <!-- IBO -->
-                    <div class="card" style="margin-bottom: 15px;">
-                        <h4 style="margin-bottom:10px; color:var(--text-light)">IBO Player</h4>
-                        <input type="text" id="iboMac" class="form-control" placeholder="MAC Address">
-                        <input type="text" id="iboKey" class="form-control" placeholder="Key">
-                        <label>تاريخ التفعيل</label>
-                        <input type="date" id="iboStartDate" class="form-control">
-                        <select id="iboDuration" class="form-control">
-                            <option value="">بدون تفعيل</option>
-                            <option value="year">سنة واحدة</option>
-                            <option value="lifetime">مدى الحياة</option>
-                        </select>
-                        <input type="number" id="iboPrice" class="form-control" placeholder="السعر">
+                    <div class="card">
+                        <h4>IBO Player</h4>
+                        <div class="form-group"><label>MAC</label><input type="text" id="iboMac" class="form-control"></div>
+                        <div class="form-group"><label>Key</label><input type="text" id="iboKey" class="form-control"></div>
+                        <div class="form-group"><label>التفعيل</label><input type="date" id="iboStartDate" class="form-control"></div>
+                        <div class="form-group">
+                            <label>المدة</label>
+                            <select id="iboDuration" class="form-control">
+                                <option value="">بدون تفعيل</option>
+                                <option value="year">سنة</option>
+                                <option value="lifetime">مدى الحياة</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>السعر</label><input type="number" id="iboPrice" class="form-control"></div>
                     </div>
 
-                    <!-- Server -->
-                    <div class="card" style="margin-bottom: 20px;">
-                        <h4 style="margin-bottom:10px; color:var(--text-light)">السيرفر</h4>
-                        <input type="text" id="host" class="form-control" placeholder="Host / URL">
-                        <input type="text" id="username" class="form-control" placeholder="Username">
-                        <input type="text" id="password" class="form-control" placeholder="Password">
-                        <textarea id="m3u" class="form-control" rows="3" placeholder="M3U Link"></textarea>
+                    <div class="card">
+                        <h4>السيرفر</h4>
+                        <div class="form-group"><label>Host</label><input type="text" id="host" class="form-control"></div>
+                        <div class="form-group"><label>User</label><input type="text" id="username" class="form-control"></div>
+                        <div class="form-group"><label>Pass</label><input type="text" id="password" class="form-control"></div>
+                        <div class="form-group"><label>M3U</label><textarea id="m3u" class="form-control" rows="2"></textarea></div>
                     </div>
 
                     <div style="display: flex; gap: 10px;">
-                        <button type="submit" class="btn btn-primary">حفظ</button>
-                        <button type="button" class="btn btn-warning" onclick="showSection('dashboard')">إلغاء</button>
+                        <button type="submit" class="btn btn-primary" style="flex:1">حفظ</button>
+                        <button type="button" class="btn btn-warning" style="flex:1" onclick="showSection('dashboard')">إلغاء</button>
                     </div>
                 </form>
             </div>
@@ -316,33 +301,20 @@
             <!-- 3. FINANCE -->
             <div id="finance" class="section">
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <span class="stat-title">المبيعات</span>
-                        <span class="stat-value" id="totalSales" style="color:var(--primary)">0</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-title">التعبئة</span>
-                        <span class="stat-value" id="totalRecharge" style="color:var(--warning)">0</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-title">الصافي</span>
-                        <span class="stat-value" id="netProfit" style="color:var(--success)">0</span>
-                    </div>
+                    <div class="stat-card"><span class="stat-title">المبيعات</span><span class="stat-value" id="totalSales" style="color:var(--primary)">0</span></div>
+                    <div class="stat-card"><span class="stat-title">التعبئة</span><span class="stat-value" id="totalRecharge" style="color:var(--warning)">0</span></div>
+                    <div class="stat-card"><span class="stat-title">الصافي</span><span class="stat-value" id="netProfit" style="color:var(--success)">0</span></div>
                 </div>
-
                 <div class="card">
                     <h4>إضافة تعبئة</h4>
-                    <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <div style="display: flex; gap: 10px;">
                         <input type="number" id="rechargeAmount" class="form-control" placeholder="المبلغ">
                         <button onclick="addRecharge()" class="btn btn-success" style="width: auto;">+</button>
                     </div>
                     <input type="text" id="rechargeNote" class="form-control" placeholder="ملاحظة" style="margin-top: 10px;">
                 </div>
-
-                <div style="margin-top: 20px;">
-                    <h4>سجل التعبئات</h4>
-                    <div id="rechargeListMobile" style="margin-top: 10px;"></div>
-                </div>
+                <h4>سجل التعبئات</h4>
+                <div id="rechargeListMobile" style="margin-top: 10px;"></div>
             </div>
 
             <!-- 4. TRASH -->
@@ -362,28 +334,16 @@
                     <div id="devicesList" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
                 </div>
             </div>
-
         </div>
 
-        <!-- BOTTOM NAV (Mobile Only) -->
+        <!-- BOTTOM NAV -->
         <div class="bottom-nav">
-            <button class="nav-item active" id="btn-dashboard" onclick="showSection('dashboard')">
-                <i class="fas fa-home"></i> <span>الرئيسية</span>
-            </button>
-            <button class="nav-item" id="btn-add" onclick="showSection('add'); resetForm();">
-                <i class="fas fa-plus-circle"></i> <span>إضافة</span>
-            </button>
-            <button class="nav-item" id="btn-finance" onclick="showSection('finance')">
-                <i class="fas fa-wallet"></i> <span>المالية</span>
-            </button>
-            <button class="nav-item" id="btn-trash" onclick="showSection('trash')">
-                <i class="fas fa-trash"></i> <span>المحذوفات</span>
-            </button>
-            <button class="nav-item hidden" id="btn-settings" onclick="showSection('settings')">
-                <i class="fas fa-cogs"></i> <span>الإعدادات</span>
-            </button>
+            <button class="nav-item active" id="btn-dashboard" onclick="showSection('dashboard')"><i class="fas fa-home"></i> <span>الرئيسية</span></button>
+            <button class="nav-item" id="btn-add" onclick="showSection('add'); resetForm();"><i class="fas fa-plus-circle"></i> <span>إضافة</span></button>
+            <button class="nav-item" id="btn-finance" onclick="showSection('finance')"><i class="fas fa-wallet"></i> <span>المالية</span></button>
+            <button class="nav-item" id="btn-trash" onclick="showSection('trash')"><i class="fas fa-trash"></i> <span>المحذوفات</span></button>
+            <button class="nav-item hidden" id="btn-settings" onclick="showSection('settings')"><i class="fas fa-cogs"></i> <span>الإعدادات</span></button>
         </div>
-
     </div>
 
     <!-- Modals -->
@@ -413,7 +373,6 @@
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, setPersistence, browserLocalPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, where, getDocs, setDoc, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // CONFIG
         const firebaseConfig = {
             apiKey: "AIzaSyA3EcwcPbdJo5j79fS0j2Hhw2W7LLEWxEc",
             authDomain: "control-iptv-49b63.firebaseapp.com",
@@ -456,15 +415,8 @@
                 if (snap.exists()) {
                     isAdmin = (snap.data().role === 'admin');
                     const settingsBtn = document.getElementById('btn-settings');
-                    const navSettings = document.getElementById('nav-settings');
-                    if (isAdmin) {
-                        navSettings.classList.remove('hidden');
-                        settingsBtn.classList.remove('hidden');
-                        claimOrphanedSubscribers(uid); 
-                    } else {
-                        navSettings.classList.add('hidden');
-                        settingsBtn.classList.add('hidden');
-                    }
+                    if (isAdmin) settingsBtn.classList.remove('hidden');
+                    else settingsBtn.classList.add('hidden');
                 }
             });
             const subQuery = query(collection(db, "subscribers"), where("userId", "==", uid));
@@ -499,17 +451,57 @@
             allSubs.forEach(async (d) => { if (!d.data().userId) await updateDoc(d.ref, { userId: adminUid }); });
         }
 
-        // --- UI Logic ---
+        window.toggleAuthMode = () => {
+            isLoginMode = !isLoginMode;
+            document.getElementById('auth-submit-btn').innerText = isLoginMode ? "تسجيل الدخول" : "إنشاء حساب";
+            document.getElementById('auth-switch-text').innerText = isLoginMode ? "ليس لديك حساب؟ إنشاء حساب" : "لديك حساب؟ تسجيل الدخول";
+            document.getElementById('confirm-password-wrapper').style.display = isLoginMode ? 'none' : 'block';
+            document.getElementById('auth-confirm-password').required = !isLoginMode;
+        };
+
+        window.togglePasswordVisibility = (fid, icon) => {
+            const inp = document.getElementById(fid);
+            const isPass = inp.type === 'password';
+            inp.type = isPass ? 'text' : 'password';
+            icon.className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye';
+        };
+
+        document.getElementById('auth-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('auth-email').value;
+            const pass = document.getElementById('auth-password').value;
+            const confirmPass = document.getElementById('auth-confirm-password').value;
+            const rememberMe = document.getElementById('remember-me').checked;
+            
+            try {
+                if (isLoginMode) {
+                    await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
+                    await signInWithEmailAndPassword(auth, email, pass);
+                } else {
+                    if(pass !== confirmPass) throw new Error("كلمة المرور غير متطابقة");
+                    if(pass.length < 6) throw new Error("كلمة المرور ضعيفة");
+                    const cred = await createUserWithEmailAndPassword(auth, email, pass);
+                    await setDoc(doc(db, 'users', cred.user.uid), { email, role: 'user', createdAt: new Date().toISOString() });
+                }
+            } catch (err) {
+                const el = document.getElementById('auth-error');
+                el.innerText = err.message; el.style.display = 'block';
+            }
+        });
+
+        window.logout = () => signOut(auth);
+        window.resetPassword = async () => {
+            const email = document.getElementById('auth-email').value;
+            if(email) { await sendPasswordResetEmail(auth, email); alert("تم الإرسال"); } else alert("ادخل الايميل");
+        };
+
+        window.toggleChartVisibility = () => {
+            document.getElementById('chartContainer').classList.toggle('hidden');
+        };
+
         window.showSection = (id) => {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            
-            // Top Nav Active
-            document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-            const topBtn = document.getElementById('nav-'+id);
-            if(topBtn) topBtn.classList.add('active');
-
-            // Bottom Nav Active
             document.querySelectorAll('.bottom-nav .nav-item').forEach(b => b.classList.remove('active'));
             const botBtn = document.getElementById('btn-'+id);
             if(botBtn) botBtn.classList.add('active');
@@ -558,11 +550,11 @@
 
                     tbody.innerHTML += `
                         <tr>
-                            <td data-label="الاسم"><span style="color:var(--primary);font-weight:bold;cursor:pointer" onclick="showDetails('${sub.id}')">${sub.name}</span></td>
-                            <td data-label="IPTV"><span class="status-badge ${iptvClass}" onclick="showDateDetails(event, '${sub.startDate}', '${sub.endDate}', 'IPTV')">${iptvText}</span></td>
-                            <td data-label="IBO Player"><span class="status-badge ${iboClass}" onclick="showDateDetails(event, '${iboStartDate}', '${iboEndDate}', 'IBO Player')">${iboText}</span></td>
-                            <td data-label="الجهاز">${sub.device || '-'}</td>
-                            <td data-label="إجراءات">
+                            <td><span style="color:var(--primary);font-weight:bold;cursor:pointer" onclick="showDetails('${sub.id}')">${sub.name}</span></td>
+                            <td><span class="status-badge ${iptvClass}" onclick="showDateDetails(event, '${sub.startDate}', '${sub.endDate}', 'IPTV')">${iptvText}</span></td>
+                            <td><span class="status-badge ${iboClass}" onclick="showDateDetails(event, '${iboStartDate}', '${iboEndDate}', 'IBO Player')">${iboText}</span></td>
+                            <td>${sub.device || '-'}</td>
+                            <td>
                                 <button class="btn btn-warning btn-sm" onclick="editSub('${sub.id}')"><i class="fas fa-edit"></i></button>
                                 <button class="btn btn-danger btn-sm" onclick="moveToTrash('${sub.id}')"><i class="fas fa-trash"></i></button>
                             </td>
@@ -579,17 +571,13 @@
             document.getElementById('dateModalTitle').innerText = title;
             document.getElementById('dateModalStart').innerText = start;
             document.getElementById('dateModalEnd').innerText = end;
-            
-            // Position near click
             pop.style.display = 'block';
-            pop.style.left = (e.clientX - 100) + 'px';
-            pop.style.top = (e.clientY + 20) + 'px';
-            
-            // Hide after 3 seconds
+            pop.style.left = '50%';
+            pop.style.top = '50%';
+            pop.style.transform = 'translate(-50%, -50%)';
             setTimeout(() => pop.style.display = 'none', 3000);
         };
 
-        // --- Render Lists Mobile Friendly ---
         function renderRechargeTable() {
             const container = document.getElementById('rechargeListMobile');
             container.innerHTML = '';
@@ -620,55 +608,6 @@
                     </div>
                 `;
             });
-        };
-
-        // --- Standard Logic (Copied from v12) ---
-        window.toggleAuthMode = () => {
-            isLoginMode = !isLoginMode;
-            document.getElementById('auth-submit-btn').innerText = isLoginMode ? "تسجيل الدخول" : "إنشاء حساب";
-            document.getElementById('auth-switch-text').innerText = isLoginMode ? "ليس لديك حساب؟ إنشاء حساب" : "لديك حساب؟ تسجيل الدخول";
-            document.getElementById('confirm-password-wrapper').style.display = isLoginMode ? 'none' : 'block';
-            document.getElementById('auth-confirm-password').required = !isLoginMode;
-        };
-
-        window.togglePasswordVisibility = (fid, icon) => {
-            const inp = document.getElementById(fid);
-            const isPass = inp.type === 'password';
-            inp.type = isPass ? 'text' : 'password';
-            icon.className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye';
-        };
-
-        document.getElementById('auth-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('auth-email').value;
-            const pass = document.getElementById('auth-password').value;
-            const confirmPass = document.getElementById('auth-confirm-password').value;
-            const rememberMe = document.getElementById('remember-me').checked;
-            
-            try {
-                if (isLoginMode) {
-                    await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
-                    await signInWithEmailAndPassword(auth, email, pass);
-                } else {
-                    if(pass !== confirmPass) throw new Error("كلمة المرور غير متطابقة");
-                    if(pass.length < 6) throw new Error("كلمة المرور ضعيفة");
-                    const cred = await createUserWithEmailAndPassword(auth, email, pass);
-                    await setDoc(doc(db, 'users', cred.user.uid), { email, role: 'user', createdAt: new Date().toISOString() });
-                }
-            } catch (err) {
-                const el = document.getElementById('auth-error');
-                el.innerText = err.message; el.style.display = 'block';
-            }
-        });
-
-        window.logout = () => signOut(auth);
-        window.resetPassword = async () => {
-            const email = document.getElementById('auth-email').value;
-            if(email) { await sendPasswordResetEmail(auth, email); alert("تم الإرسال"); } else alert("ادخل الايميل");
-        };
-
-        window.toggleChartVisibility = () => {
-            document.getElementById('chartContainer').classList.toggle('hidden');
         };
 
         function calculateFinances() {
@@ -724,7 +663,6 @@
             const s = subscribers.find(x => x.id === id);
             document.getElementById('formTitle').innerText = 'تعديل: ' + s.name;
             document.getElementById('editId').value = s.id;
-            // Fill all fields
             document.getElementById('name').value = s.name||'';
             document.getElementById('phone').value = s.phone||'';
             document.getElementById('deviceType').value = s.device||'';
